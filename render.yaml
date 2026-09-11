@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: lifebridge-ai
+    env: node
+    plan: free
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GEMINI_API_KEY
+        sync: false # Set securely in Render dashboard (never committed to repository)
+      - key: ALLOWED_ORIGINS
+        value: https://lifebridge-ai-stabin-202-81bd3.web.app,https://lifebridge-ai-stabin-202-81bd3.firebaseapp.com
